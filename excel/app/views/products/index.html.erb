@@ -1,0 +1,11 @@
+<h1>Products</h1>
+<ul id="items">
+	<% @products.each do |c| %>
+	<li><%= c.name %></li>
+	<% end %>
+</ul>
+<p>
+  Download:
+  <%= link_to "CSV", products_path(format: "csv") %> |
+  <%= link_to "Excel", products_path(format: "xls") %>
+</p>

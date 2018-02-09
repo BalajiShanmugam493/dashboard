@@ -10,12 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209013903) do
+ActiveRecord::Schema.define(version: 20180209203652) do
+
+  create_table "itemdetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "itemID"
+    t.date "Date"
+    t.string "accessionItemNo"
+    t.string "journalSequence"
+    t.string "publicationYear"
+    t.string "documentType"
+    t.string "pageSpan"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "itemqueuedetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "itemQueueDetailsID"
+    t.integer "itemID"
+    t.integer "queueStatusID"
+    t.integer "userID"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.date "released_on"
     t.decimal "price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userrolemaps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "userMapRoleID"
+    t.integer "mapUserID"
+    t.integer "mapRoleID"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

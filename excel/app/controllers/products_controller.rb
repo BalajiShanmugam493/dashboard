@@ -4,20 +4,23 @@ class ProductsController < ApplicationController
   			Product.where('name LIKE ?',"%#{params[:term]}%",)
   			
   		else 
-  			Product.where(name: '')
+  			Product.all
   			
   		end
-  		
+  		respond_to do |format|
+   		format.html
+  		format.csv { send_data @products.to_csv }
+  		format.xls
   	
   	end
-	
+	end
 
 	def products_params
   	params.require(:task).permit(:name, :complete, :due_date, :term)
   	respond_to do |format|
    	format.html
   	format.csv { send_data @products.to_csv }
-  	format.xls
-  	end
+  		format.xls
+end
 end
 end

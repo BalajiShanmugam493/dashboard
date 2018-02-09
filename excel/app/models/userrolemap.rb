@@ -1,0 +1,2 @@
+class Userrolemap < ApplicationRecord
+end

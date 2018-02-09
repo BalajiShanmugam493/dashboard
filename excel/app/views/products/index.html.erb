@@ -1,7 +1,12 @@
 <h1>Products</h1>
 <ul id="items">
 	<% for c in @products %>
-	<li><%= c.name %></li>
+	<tr>
+	<td><%= c.id %></td>
+	<td><%= c.name %></td>
+	<td><%= c.price %></td>
+	</tr>
+	</br>
 	<% end %>
 </ul>
 <div>
@@ -12,6 +17,5 @@
 </div>
 <p>
   Download:
-  <%= link_to "CSV", products_path(format: "csv") %> |
   <%= link_to "Excel", products_path(format: "xls") %>
 </p>

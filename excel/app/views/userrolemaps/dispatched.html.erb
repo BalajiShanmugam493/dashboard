@@ -1,0 +1,17 @@
+<p>DISPATCHED</p>
+	<table>
+	<tr>
+		<td>Date</td>
+		<td>ItemID</td>
+		<td>AccessionItemNo</td>
+		<td>JournalSequence</td>
+	</tr>
+<% for t in @details %>
+	<tr>
+	<td><%= t.Date %></td>
+	<td><%= t.itemID %></td>
+	<td><%= t.accessionItemNo %></td>
+	<td><%= t.journalSequence %></td>
+	</tr>
+<% end %>
+</table>

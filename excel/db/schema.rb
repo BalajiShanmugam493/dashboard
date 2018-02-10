@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209203652) do
+ActiveRecord::Schema.define(version: 20180210011045) do
 
   create_table "itemdetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "itemID"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20180209203652) do
     t.integer "userMapRoleID"
     t.integer "mapUserID"
     t.integer "mapRoleID"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "mapRoleID"
+    t.string "username"
+    t.string "encrypted_password"
+    t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

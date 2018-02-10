@@ -1,4 +1,7 @@
 class UserrolemapsController < ApplicationController
+	before_action :authenticate_user, :only => [:index, :profile, :setting]
+before_action :save_login_state, :only => [:login, :login_attempt]
+ 
 	def index
 		@operators1 = Userrolemap.where(:maproleID => 2).count
 		@files1 = Itemqueuedetail.where(:queueStatusID => 1, :status => 'NOT ALLOCATED').count

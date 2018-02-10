@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+  
   resources :products
 
   root to: 'products#index'
@@ -6,6 +8,11 @@ Rails.application.routes.draw do
   resources :userrolemaps
 
   root to: 'userrolemaps#index'
+
+ 
+
+
+  
 
   get "/path/to/your/tdk/page", to: "userrolemaps#tdk", as: "tdk"
 

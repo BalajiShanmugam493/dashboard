@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
  
- resources :sessions
- root to: 'sessions#login'
-  resources :users
+  #resources :users
 
-  root to: 'users#new'
   
+  #root to: 'users#new'
+  
+  resources :sessions
+  root to:'sessions#login'
 
   get 'sessions/login'
 
@@ -30,6 +31,16 @@ Rails.application.routes.draw do
   
 	
   get "/path/to/your/tdk/page", to: "userrolemaps#tdk", as: "tdk"
+   get "/path/to/your/tdk_operators/page", to: "userrolemaps#tdk_operators", as: "tdk_operators"
+
+   get "/path/to/your/funding_operators/page", to: "userrolemaps#funding_operators", as: "funding_operators"
+
+   get "/path/to/your/qc_operators/page", to: "userrolemaps#qc_operators", as: "qc_operators"
+
+   get "/path/to/your/authors_operators/page", to: "userrolemaps#authors_operators", as: "authors_operators"
+
+  get "/path/to/your/addresses_operators/page", to: "userrolemaps#addresses_operators", as: "addresses_operators"
+   
 
   get "/path/to/your/qc/page", to: "userrolemaps#qc", as: "qc"
 

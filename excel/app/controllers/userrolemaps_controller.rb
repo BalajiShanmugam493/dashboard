@@ -1,6 +1,6 @@
 class UserrolemapsController < ApplicationController
 	before_action :authenticate_user, :only => [:index, :profile, :setting]
-before_action :save_login_state, :only => [:login, :login_attempt]
+#before_action :save_login_state, :only => [:login, :login_attempt]
  
 	def index
 		@operators1 = Userrolemap.where(:maproleID => 2).count
@@ -147,5 +147,23 @@ before_action :save_login_state, :only => [:login, :login_attempt]
   			format.xls 
 		end
 	end
+	def tdk_operators
+		@details = User.where(:maproleID => 2)
+	end
 
+	def funding_operators
+		@details = User.where(:maproleID => 3)
+	end
+
+	def qc_operators
+		@details = User.where(:maproleID => 5)
+	end
+
+	def authors_operators
+		@details = User.where(:maproleID => 7)
+	end
+
+	def addresses_operators
+		@details = User.where(:maproleID => 6)
+	end
 end

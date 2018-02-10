@@ -1,24 +1,39 @@
 
-<%= link_to "Home", welcome_path %>
+<div>
+	<%= link_to "Home", welcome_path%>
+
 </br>
 </br>
-<%= link_to 'TDK',tdk_path(@files1) %>
+<div class = 'levels'>
+<p>TDK</p>
+<%= link_to 'Process Details',tdk_path(@files1) %>
+<br>
+<%= link_to 'Operators Details', tdk_operators_path %>
 <p>No.of operators:<%= @operators1 %></p>
 <p>No.of files:<%= @files1 %></p>
 <p>Files in progress:<%= @progress1 %></p>
-
-<%= link_to 'FUNDING',funding_path(@files2) %>
+</div>
+<div class = "levels">
+<p>FUNDING</p>
+<%= link_to 'Process Details',funding_path(@files2) %>
+<br>
+<%= link_to 'Operators Details', funding_operators_path %>
 <p>No.of operators:<%= @operators2 %></p>
 <p>No.of files:<%= @files2 %></p>
 <p>Files in progress:<%= @progress2 %></p>
-
-<%= link_to 'QC',qc_path(@files3) %>
+</div>
+<div class = "levels">
+<p>QC</p>
+<%= link_to 'Process Details',qc_path(@files3) %>
+<br>
+<%= link_to 'Operators Details', qc_operators_path %>
 <p>No.of operators:<%= @operators3 %></p>
 <p>No.of files:<%= @files3 %></p>
 <p>Files in progress:<%= @progress3 %></p>
-
-<%= link_to 'DISPATCHED',dispatched_path(@files3) %>
+</div>
+<div class = "levels">
+<p>DISPATCHED</p>
+<%= link_to 'Process Details',dispatched_path(@files3) %>
 <p>No.of files:<%= @files4 %></p>
-
-<%= link_to "Logout", logout_path %>
+</div>
 

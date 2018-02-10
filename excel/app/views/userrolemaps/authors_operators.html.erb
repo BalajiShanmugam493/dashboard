@@ -1,0 +1,16 @@
+<%= link_to 'Main Page',index1_path %>
+<p>AUTHORS OPERATORS</p>
+	<table>
+	<tr>
+		<td>ID</td>
+		<td>MapRoleID</td>
+		<td>UserName</td>	
+	</tr>
+<% for t in @details %>
+	<tr>
+	<td><%= t.id %></td>
+	<td><%= t.mapRoleID %></td>
+	<td><%= t.username %></td>
+	</tr>
+<% end %>
+</table>

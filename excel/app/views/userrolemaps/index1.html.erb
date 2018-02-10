@@ -1,0 +1,24 @@
+
+<%= link_to "Home", welcome_path %>
+</br>
+</br>
+<%= link_to 'AUTHORS',authors_path(@files5) %>
+<p>No.of operators:<%= @operators5 %></p>
+<p>No.of files:<%= @files5 %></p>
+<p>Files in progress:<%= @progress5 %></p>
+
+<%= link_to 'ADDRESSES',addresses_path(@files6) %>
+<p>No.of operators:<%= @operators6 %></p>
+<p>No.of files:<%= @files6 %></p>
+<p>Files in progress:<%= @progress6 %></p>
+
+<%= link_to 'QC',qc_path(@files3) %>
+<p>No.of operators:<%= @operators3 %></p>
+<p>No.of files:<%= @files3 %></p>
+<p>Files in progress:<%= @progress3 %></p>
+
+<%= link_to 'DISPATCHED',dispatched_path(@files4) %>
+<p>No.of files:<%= @files4 %></p>
+
+<%= link_to "Logout", logout_path %>
+

@@ -9,7 +9,7 @@ before_action :save_login_state, :only => [:login, :login_attempt]
   if authorized_user
     session[:user_id] = authorized_user.id
     flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
-    redirect_to :controller => 'userrolemaps', :action => 'index' 
+    redirect_to :controller => 'userrolemaps', :action => 'welcome' 
   else
     flash[:notice] = "Invalid Username or Password"
     flash[:color]= "invalid"

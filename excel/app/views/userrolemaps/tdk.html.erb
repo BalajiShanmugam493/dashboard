@@ -1,23 +1,37 @@
 <%= link_to 'Main Page',userrolemaps_path %>
 <p>TDK</p>
-	<table>
-	<tr>
+<%= form_tag(tdk_path, method: :get) do %>
+<table class="table">
+<tr class="tr">
+<td>Start Date:<%= select_date Date.today, prefix: :start_date %></td>
+<td>Last Date:<%= select_date Date.today, prefix: :end_date %></td>
+<td>AccessionItemNo:<%= text_field_tag :accession%></td>
+<td>JournalSequence:<%= text_field_tag :journal %></td>
+<td><%= submit_tag 'Search' %></td>
+</tr>
+</table>
+<% end %>
+<p>
+Download:
+<%= link_to "Excel", tdk_path(format: "xls") %>
+</p>
+
+	<table class="table">
+	<tr class="tr">
 		<td>Date</td>
 		<td>ItemID</td>
 		<td>AccessionItemNo</td>
 		<td>JournalSequence</td>	
 	</tr>
 <% for t in @details %>
-	<tr>
+	<tr class="tr">
 	<td><%= t.Date %></td>
 	<td><%= t.itemID %></td>
 	<td><%= t.accessionItemNo %></td>
 	<td><%= t.journalSequence %></td>
+	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+
 	</tr>
 <% end %>
 </table>
-<p>
-Download:
-<%= link_to "Excel", tdk_path(format: "xls") %>
-</p>
 

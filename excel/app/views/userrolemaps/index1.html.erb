@@ -1,34 +1,47 @@
+<br>
+<%= button_to "Home", welcome_path,method: :get,class:"button1" %>
+<h1 >PROCESS D</h1>
+</br>
+</br>
+<table class="indextable" >
+<tr>
+	<td class="head1">AUTHORS</td>
+	<td class="head2">ADDRESSES</td>
+	<td class="head3">QC</td>
+	<td class="head4">DISPATCHED</td>
+</tr>
+<tr>
+<td class="td1">
 
-<%= link_to "Home", welcome_path %>
-</br>
-</br>
-<div class = 'levels'>
-<p>AUTHORS</p>
-<%= link_to 'Process Details',authors_path(@files5) %>
-<%= link_to 'Operators Details',authors_operators_path %>
+<%= button_to 'Process Details',authors_path(@files5),method: :get, class:"button1" %>
+<br>
+<%= button_to 'Operators Details',authors_operators_path,method: :get, class:"button1" %>
 <p>No.of operators:<%= @operators5 %></p>
 <p>No.of files:<%= @files5 %></p>
 <p>Files in progress:<%= @progress5 %></p>
-</div>
-<div class = 'levels'>
-<p>ADDRESSES</p>
-<%= link_to 'Process Details',addresses_path(@files6) %>
-<%= link_to 'Operators Details',addresses_operators_path %>
+<meter value="<%= @files5 %>" min="0" max="10">2 out of 10</meter><br>
+</td>
+<td class="td2">
+<%= button_to 'Process Details',addresses_path(@files6),method: :get, class:"button2" %>
+<br>
+<%= button_to 'Operators Details',addresses_operators_path,method: :get, class:"button2" %>
 <p>No.of operators:<%= @operators6 %></p>
 <p>No.of files:<%= @files6 %></p>
 <p>Files in progress:<%= @progress6 %></p>
-</div>
-<div class = 'levels'>
-<p>QC</p>
-<%= link_to 'Process Details',qc_path(@files3) %>
-<%= link_to 'Operators Details',qc_operators_path %>
+<meter value="<%= @files6 %>" min="0" max="10">2 out of 10</meter><br>
+</td>
+<td class=td3>
+<%= button_to 'Process Details',qc_path(@files3),method: :get, class:"button3" %>
+<br>
+<%= button_to 'Operators Details',qc_operators_path,method: :get , class:"button3"%>
 <p>No.of operators:<%= @operators3 %></p>
 <p>No.of files:<%= @files3 %></p>
 <p>Files in progress:<%= @progress3 %></p>
-</div>
-<div class = 'levels'>
-<p>DISPATCHED</p>
-<%= link_to 'Process Details',dispatched_path(@files4) %>
+<meter value="<%= @files3 %>" min="0" max="10">2 out of 10</meter><br>
+</td>
+<td class="td4">
+<%= button_to 'Process Details',dispatched_path(@files4),method: :get, class:"button4" %>
 <p>No.of files:<%= @files4 %></p>
-</div>
+<meter value="<%= @files4 %>" min="0" max="10">2 out of 10</meter><br>
+</td>
 

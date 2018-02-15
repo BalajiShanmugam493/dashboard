@@ -9,6 +9,12 @@
   </head>
 
   <body>
+  <ul>
+  <li><%= link_to "Home", welcome_path %></li>
+  <li><%= link_to "Process A", userrolemaps_path %></li>
+  <li><%= link_to "Process D", index1_path %></li>
+  <li><%= link_to "Logout", logout_path %></li>
+</ul>
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p> 
 <%= yield %>

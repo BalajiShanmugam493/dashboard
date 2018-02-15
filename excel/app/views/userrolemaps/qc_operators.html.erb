@@ -1,13 +1,13 @@
 <%= link_to 'Main Page',userrolemaps_path %>
 <p>QC OPERATORS</p>
-	<table>
-	<tr>
+	<table class="table">
+	<tr class="tr">
 		<td>ID</td>
 		<td>MapRoleID</td>
 		<td>UserName</td>	
 	</tr>
 <% for t in @details %>
-	<tr>
+	<tr class="tr">
 	<td><%= t.id %></td>
 	<td><%= t.mapRoleID %></td>
 	<td><%= t.username %></td>

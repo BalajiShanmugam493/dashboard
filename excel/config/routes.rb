@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  get 'userrolemaps/show'
+
   #resources :users
 
   
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 	
 	match ':controller/:action/(:id)', via: [:get, :post]
   
-	
+  
   get "/path/to/your/tdk/page", to: "userrolemaps#tdk", as: "tdk"
    get "/path/to/your/tdk_operators/page", to: "userrolemaps#tdk_operators", as: "tdk_operators"
 

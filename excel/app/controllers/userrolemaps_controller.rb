@@ -54,17 +54,27 @@ class UserrolemapsController < ApplicationController
 		else
 		@journal = ".*"
 		end
+		if params[:start_date] == ''
+			params[:start_date][:year] = '0000'
+			params[:start_date][:month] = '00'
+			params[:start_date][:day] = '00'
+		end 
 		@details = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+			else
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			end
+		@excel = if params[:start_date]
 			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
 			else
 				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
 			end
 		#respond_to do |format|
   		#	format.html
-  		#	format.csv { send_data @details.to_csv }
+  		#	format.csv { send_data @excel.to_csv }
   		#	format.xls 
 		#end
-		@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		
 	end
 
 	def funding
@@ -79,7 +89,7 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:start_date]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{@start_year}-#{@start_month}-#{@start_day}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
 			else
 				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
 			end	
@@ -88,8 +98,12 @@ class UserrolemapsController < ApplicationController
   		#	format.csv { send_data @details.to_csv }
   		#	format.xls 
 		#end
-		@excel1 =  Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
-
+		@excel1 = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+			else
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			end	
+		
 	end
 
 	def qc
@@ -113,7 +127,12 @@ class UserrolemapsController < ApplicationController
   		#	format.csv { send_data @details.to_csv }
   		#	format.xls 
 		#end
-		@excel2 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		@excel2 = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}","#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+		else
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		end
+		
 	end
 
 	def dispatched
@@ -137,7 +156,12 @@ class UserrolemapsController < ApplicationController
   		#	format.csv { send_data @details.to_csv }
   		#	format.xls 
 		#end
-		@excel3 =  Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		@excel3 = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+		else
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		end
+		
 	end
 
 	def authors
@@ -152,7 +176,7 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:start_date]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ?  AND accessionItemNo = ? AND Date BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
 		else
 			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED"')
 		end
@@ -161,12 +185,27 @@ class UserrolemapsController < ApplicationController
   		#	format.csv { send_data @details.to_csv }
   		#	format.xls 
 		#end
-		@excel4 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		@excel4 = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
+		else
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		end
+		
 	end
 
 	def addresses
+		if params[:accession] != ''
+		@accession =	params[:accession]
+		else
+		@accession	= ".*"
+		end
+		if params[:journal] != ''
+		@journal =	params[:journal]
+		else
+		@journal = ".*"
+		end
 		@details = if params[:start_date]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED") AND (accessionItemNo = ? OR Date BETWEEN ? AND ?)',"#{params[:accession]}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
 		else
 			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED"')
 		end
@@ -175,7 +214,12 @@ class UserrolemapsController < ApplicationController
   		#	format.csv { send_data @details.to_csv }
   		#	format.xls 
 		#end
-		@excel5 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		@excel5 = if params[:start_date]
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND Date BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")		
+		else
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		end
+		
 	end
 
 	def welcome
@@ -242,6 +286,6 @@ class UserrolemapsController < ApplicationController
 	end
 
 	def show
-		@details = Itemdetail.find(params[:id])
+		@details = Itemstatus.where(:itemID => params[:id])
 	end
 end

@@ -3,15 +3,21 @@
 <%= form_tag(qc_path, method: :get) do %>
 <table class="table">
 <tr class="tr">
-<td>Start Date:<%= select_date Date.today, prefix: :start_date %></td>
-<td>Last Date:<%= select_date Date.today, prefix: :end_date %></td>
+<% @my_date1 = Time.now - 6.years %>
+<% @my_date2 = Time.now %>
+<td>Start Date<%= select_date( @my_date1 ,prompt: true,prefix: :start_date) %></td>
+<td>Last Date<%= select_date( @my_date2 ,prompt: true,prefix: :end_date) %></td>
 <td>AccessionItemNo:<%= text_field_tag :accession %></td>
 <td>JournalSequence:<%= text_field_tag :journal %></td>
 <td><%= submit_tag 'Search' %></td>
 </tr>
 </table>
 <% end %>
-
+<p>
+Download:
+<%= link_to "Excel", qc_path(request.parameters.merge({format: :xls})), 
+    download: 'qc.xls' %>
+</p>
 	<table class="table">
 	<tr class="tr">
 		<td>Date</td>
@@ -30,7 +36,3 @@
 	</tr>
 <% end %>
 </table>
-<p>
-Download:
-<%= link_to "Excel", qc_path(format: "xls") %>
-</p>

@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :name
       t.date :released_on
       t.decimal :price
+      
 
       t.timestamps
     end

@@ -1,2 +1,0 @@
-# VelOCRaptor
-Content extraction tool

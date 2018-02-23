@@ -1,8 +1,10 @@
 <br>
-<h1 class="headingdb">PROCESS A</h1>
+<div>
+<%= button_to "Home", welcome_path,method: :get,class:"button1", style:"align:center;"%>
+</div>
+<h1>PROCESS A</h1>
 </br>
-
-<table class="indextable" style="margin: 0px auto;">
+<table class="indextable" >
 <tr>
 	<td class="head1">TDK</td>
 	<td class="head2">FUNDING</td>
@@ -14,9 +16,10 @@
 <!-- <div class = 'levels'>
 
  -->
-<%= button_to 'Process Details',tdk_path(@files1),method: :get, class:"button1" %>
+<%= link_to 'Process Details',tdk_path(@files1),class:"button1" %>
 <br>
-<%= button_to 'Operators Details', tdk_operators_path,method: :get, class:"button1" %>
+</br>
+<%= link_to 'Operators Details', tdk_operators_path,class:"button1" %>
 <p>No.of operators:<%= @operators1 %></p>
 <p>No.of files:<%= @files1 %></p>
 <p>Files in progress:<%= @progress1 %></p>
@@ -26,9 +29,10 @@
 <td class="td2">
 <!-- <div class = "levels">
  -->
-<%= button_to 'Process Details',funding_path(@files2),method: :get, class:"button2" %>
+<%= link_to 'Process Details',funding_path(@files2), class:"button2" %>
 <br>
-<%= button_to 'Operators Details', funding_operators_path,method: :get, class:"button2" %>
+</br>
+<%= link_to 'Operators Details', funding_operators_path, class:"button2" %>
 <p>No.of operators:<%= @operators2 %></p>
 <p>No.of files:<%= @files2 %></p>
 <p>Files in progress:<%= @progress2 %></p>
@@ -37,9 +41,10 @@
 </td>
 <td class="td3">
 <!-- <div class = "levels"> -->
-<%= button_to 'Process Details',qc_path(@files3),method: :get, class:"button3" %>
+<%= link_to 'Process Details',qc_path(@files3), class:"button3" %>
 <br>
-<%= button_to 'Operators Details', qc_operators_path,method: :get, class:"button3" %>
+</br>
+<%= link_to 'Operators Details', qc_operators_path, class:"button3" %>
 <p>No.of operators:<%= @operators3 %></p>
 <p>No.of files:<%= @files3 %></p>
 <p>Files in progress:<%= @progress3 %></p>
@@ -48,7 +53,7 @@
 </td>
 <td class="td4">
 <!-- <div class = "levels"> -->
-		<%= button_to 'Process Details',dispatched_path(@files3),method: :get, class:"button4" %>
+<%= link_to 'Process Details',dispatched_path(@files3), class:"button4" %>
 <p>No.of files:<%= @files4 %></p>
 <meter class="meter" value="<%= @files4 %>" min="0" max="10">2 out of 10</meter><br>
 

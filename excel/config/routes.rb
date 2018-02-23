@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get "/path/to/your/funding/page", to: "userrolemaps#funding", as: "funding"
 
   get "/path/to/your/dispatched/page", to: "userrolemaps#dispatched", as: "dispatched"
+   # post "/path/to/your/dispatched/page", to: "userrolemaps#dispatched", as: "dispatched"
 
 	get "/path/to/your/welcome/page", to: "userrolemaps#welcome", as: "welcome"
 	get "/path/to/your/index1/page", to: "userrolemaps#index1", as: "index1"
@@ -63,4 +64,5 @@ match "logout", :to => "sessions#logout",via: [:get, :post]
 match "home", :to => "sessions#home",via: [:get, :post]
 match "profile", :to => "sessions#profile",via: [:get, :post]
 match "setting", :to => "sessions#setting",via: [:get, :post]
+match "dispatched", :to=> "userrolemaps#dispatched", via: [:get, :post]
 end

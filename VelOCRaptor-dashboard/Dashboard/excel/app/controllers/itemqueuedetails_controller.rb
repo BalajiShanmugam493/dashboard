@@ -1,2 +1,0 @@
-class ItemqueuedetailsController < ApplicationController
-end

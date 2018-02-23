@@ -1,13 +1,12 @@
 <% @page_title = "UserAuth | Signup" %>
-<div class="signUp">
-      <h1 class = "heading1">Sign Up</h1>
-    <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+<div class="Sign_Form">
+  <h1>Sign Up</h1>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <p> Username</br> <%= f.text_field :username%> </p>
-    <p> MapRoleID</br> <%= f.text_field :mapRoleID%> </p>
+    <p> mapRoleID</br> <%= f.text_field :mapRoleID%> </p>
     <p> Password</br> <%= f.password_field :password%></p>
     <p> Confirm Password</br> <%= f.password_field :password_confirmation%> </p>
-    <br>
-    <%= f.submit :Signup , class:"signupbutton" %>
+    <%= f.submit :Signup %>
   <% end %>
   <% if @user.errors.any? %>
     <ul class="Signup_Errors">
@@ -16,5 +15,4 @@
     <% end %>
     </ul>
   <% end %>
-  <br>
 </div>

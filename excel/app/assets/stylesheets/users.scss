@@ -1,12 +1,9 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.signUp{
-	background:#2c75a5;
+.Sign_Form{
+	background:#8cb3f2;
 	text-align:center;
-	width:40%;
-	margin: 0 auto;
-	border-radius:5%;
 }
 body{
 	font-family:"Arial", Helvetica, sans-serif;
@@ -15,26 +12,4 @@ body{
 	align:center;
 	//margin-left:10%;
 	//margin-right:100%;
-}
-.signupbutton{
-	background-color:white; /* Green */
-    border: none;
-    color: #2c75a5;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight:bold;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 5%;
-}
-
-.signupbutton:hover{
-	color:#535559;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-.heading1{
-	background:white;
-	color:#2c75a5;
 }

@@ -1,9 +1,9 @@
-<%= button_to 'Back',userrolemaps_path, method: :get, class: "backbutton"%>
+<%= link_to 'Main Page',userrolemaps_path %>
 <p>TDK</p>
 <%= form_tag(tdk_path, method: :get) do %>
 <table class="table">
 <tr class="tr">
-<% @my_date1 = Time.now - 6.years %>
+<% @my_date1 = Time.now - 4.years %>
 <% @my_date2 = Time.now %>
 <td>Start Date<%= select_date( @my_date1 ,prompt: true,prefix: :start_date) %></td>
 <td>Last Date<%= select_date( @my_date2 ,prompt: true,prefix: :end_date) %></td>
@@ -14,8 +14,9 @@
 </table>
 <% end %>
 <p>
-<%= link_to " Download Excel", tdk_path(request.parameters.merge({format: :xls})), 
-    download: 'tdk.xls', class: "backbutton" %>
+Download:
+<%= link_to "Excel", tdk_path(request.parameters.merge({format: :xls})), 
+    download: 'tdk.xls' %>
 </p>
 
 	<table class="table">
@@ -24,6 +25,8 @@
 		<td>ItemID</td>
 		<td>AccessionItemNo</td>
 		<td>JournalSequence</td>	
+		<td>Priority</td>
+		<td>Workflow</td>
 	</tr>
 <% for t in @details %>
 	<tr class="tr">
@@ -31,6 +34,12 @@
 	<td><%= t.itemID %></td>
 	<td><%= t.accessionItemNo %></td>
 	<td><%= t.journalSequence %></td>
+	<td><%= t.priority %>
+		<%= form_tag(:action => 'updateTdk') do %>
+		<%= text_field_tag(:priority) %>
+		<%= hidden_field_tag 'id' , t.id %>
+		<%= submit_tag("Change") %>
+  		<% end %></td>
 	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
 
 	</tr>

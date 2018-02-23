@@ -1,5 +1,5 @@
 class UserrolemapsController < ApplicationController
-	before_action :authenticate_user, :only => [:index, :profile, :setting]
+	before_action :authenticate_user, :only => [:index, :profile, :setting, :index1]
 #before_action :save_login_state, :only => [:login, :login_attempt]
  
 	def index
@@ -286,6 +286,39 @@ class UserrolemapsController < ApplicationController
 	end
 
 	def show
+		#render :layout => 'layout1'
 		@details = Itemstatus.where(:itemID => params[:id])
+		render layout: 'layout1'
+		
+	end
+
+	def updateDispatched
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'dispatched'
+	end
+
+	def updateTdk
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'tdk'
+	end
+
+	def updateFunding
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'funding'
+	end
+
+	def updateQc
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'qc'
+	end
+
+	def updateAuthors
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'authors'
+	end
+
+	def updateAddresses
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'addresses'
 	end
 end

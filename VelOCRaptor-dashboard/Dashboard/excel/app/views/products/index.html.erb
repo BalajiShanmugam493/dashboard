@@ -1,0 +1,22 @@
+<h1>Products</h1>
+<ul id="items">
+	<% for c in @products %>
+	<tr>
+	<td><%= c.id %></td>
+	<td><%= c.name %></td>
+	<td><%= c.price %></td>
+	<td><%= c.nickname %></td>
+	</tr>
+	</br>
+	<% end %>
+</ul>
+<div>
+<%= form_tag(products_path, method: :get) do %>
+<%= text_field_tag :term %>
+<%= submit_tag 'Search' %>
+<% end %>
+</div>
+<p>
+  Download:
+  <%= link_to "Excel", products_path(format: "xls") %>
+</p>

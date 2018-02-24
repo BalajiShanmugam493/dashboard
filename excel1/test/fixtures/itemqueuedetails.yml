@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itemQueueDetailsID: 1
+  itemID: 1
+  queueStatusID: 1
+  userID: 1
+  status: MyString
+
+two:
+  itemQueueDetailsID: 1
+  itemID: 1
+  queueStatusID: 1
+  userID: 1
+  status: MyString

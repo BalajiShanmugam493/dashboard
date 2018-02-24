@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userMapRoleID: 1
+  mapUserID: 1
+  mapRoleID: 1
+
+two:
+  userMapRoleID: 1
+  mapUserID: 1
+  mapRoleID: 1

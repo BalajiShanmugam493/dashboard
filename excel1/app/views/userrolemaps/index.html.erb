@@ -1,0 +1,63 @@
+<br>
+<div>
+<%= button_to "Home", welcome_path,method: :get,class:"button1", style:"align:center;"%>
+</div>
+<h1>PROCESS A</h1>
+</br>
+<table class="indextable" >
+<tr>
+	<td class="head1">TDK</td>
+	<td class="head2">FUNDING</td>
+	<td class="head3">QC</td>
+	<td class="head4">DISPATCHED</td>
+</tr>
+<tr>
+<td class="td1">
+<!-- <div class = 'levels'>
+
+ -->
+<%= link_to 'Process Details',tdk_path(@files1),class:"button1" %>
+<br>
+</br>
+<%= link_to 'Operators Details', tdk_operators_path,class:"button1" %>
+<p>No.of operators:<%= @operators1 %></p>
+<p>No.of files:<%= @files1 %></p>
+<p>Files in progress:<%= @progress1 %></p>
+<meter value="<%= @files1 %>" min="0" max="700">2 out of 10</meter><br>
+<!-- </div>
+ --></td>
+<td class="td2">
+<!-- <div class = "levels">
+ -->
+<%= link_to 'Process Details',funding_path(@files2), class:"button2" %>
+<br>
+</br>
+<%= link_to 'Operators Details', funding_operators_path, class:"button2" %>
+<p>No.of operators:<%= @operators2 %></p>
+<p>No.of files:<%= @files2 %></p>
+<p>Files in progress:<%= @progress2 %></p>
+<meter value="<%= @files2 %>" min="0" max="10">2 out of 10</meter><br>
+<!-- </div> -->
+</td>
+<td class="td3">
+<!-- <div class = "levels"> -->
+<%= link_to 'Process Details',qc_path(@files3), class:"button3" %>
+<br>
+</br>
+<%= link_to 'Operators Details', qc_operators_path, class:"button3" %>
+<p>No.of operators:<%= @operators3 %></p>
+<p>No.of files:<%= @files3 %></p>
+<p>Files in progress:<%= @progress3 %></p>
+<meter value="<%= @files3 %>" min="0" max="10">2 out of 10</meter><br>
+<!-- </div> -->
+</td>
+<td class="td4">
+<!-- <div class = "levels"> -->
+<%= link_to 'Process Details',dispatched_path(@files3), class:"button4" %>
+<p>No.of files:<%= @files4 %></p>
+<meter class="meter" value="<%= @files4 %>" min="0" max="10">2 out of 10</meter><br>
+
+<!-- </div> -->
+</td>
+</tr>
+</table>

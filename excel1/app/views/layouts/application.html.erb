@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Excel</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <ul>
+  <li><%= link_to "Home", welcome_path %></li>
+  <li><%= link_to "Process A", userrolemaps_path %></li>
+  <li><%= link_to "Process D", index1_path %></li>
+  <li><%= link_to "Logout", logout_path %></li>
+</ul>
+  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p> 
+<%= yield %>
+<body>
+</html>

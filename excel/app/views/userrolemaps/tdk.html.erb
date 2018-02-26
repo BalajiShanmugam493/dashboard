@@ -9,16 +9,16 @@
 <td>Last Date<%= select_date( @my_date2 ,prompt: true,prefix: :end_date) %></td>
 <td>AccessionItemNo:<%= text_field_tag :accession%></td>
 <td>JournalSequence:<%= text_field_tag :journal %></td>
-<td>SDate:<div class="container">
+<td>SDate:<div class="container" style="width:100%;">
     <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
                     <!-- <input type='text' class="form-control" /> -->
-                    <%= text_field_tag :datetimepicker1 %>
-                    <span class="input-group-addon">
+                    <div class="input-group-addon" style="width:100%;">
+                        <%= text_field_tag :datetimepicker1 %>
                         <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,16 +32,16 @@
         </script>
     </div>
 </div></td>
-<td>EDate:<div class="container">
+<td>EDate:<div class="container"  style="width:100%;">
     <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker2'>
                     <!-- <input type='text' class="form-control" /> -->
-                    <%= text_field_tag :datetimepicker2 %>
-                    <span class="input-group-addon">
+                    <div class="input-group-addon"  style="width:100%;">
+                        <%= text_field_tag :datetimepicker2 %>
                         <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,6 +74,7 @@ Download:
 		<td>JournalSequence</td>	
 		<td>Priority</td>
 		<td>Workflow</td>
+		<td>JobName</td>
 	</tr>
 <% for t in @details %>
 	<tr class="tr">
@@ -88,6 +89,7 @@ Download:
 		<%= submit_tag("Change") %>
   		<% end %></td>
 	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+	<td><%= t.jobName %></td>
 
 	</tr>
 <% end %>

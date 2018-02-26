@@ -3,27 +3,27 @@ class UserrolemapsController < ApplicationController
 #before_action :save_login_state, :only => [:login, :login_attempt]
  
 	def index
-		@operators1 = Userrolemap.where(:maproleID => 2).count
-		@files1 = Itemqueuedetail.where(:queueStatusID => 1, :status => 'NOT ALLOCATED').count
-		@progress1 = Itemqueuedetail.where(:queueStatusID => 1, :status => 'ALLOCATED').count
+		@operators1 = Userrolemap.where(:mapRoleID => 2).count
+		@files1 = Itemqueuedetail.where(:queueStatusID => 1, :status => '0').count
+		@progress1 = Itemqueuedetail.where(:queueStatusID => 1, :status => '1').count
 
-		@operators2 = Userrolemap.where(:maproleID => 3).count
-		@files2 = Itemqueuedetail.where(:queueStatusID => 2, :status => 'NOT ALLOCATED').count
-		@progress2 = Itemqueuedetail.where(:queueStatusID => 2, :status => 'ALLOCATED').count
+		@operators2 = Userrolemap.where(:mapRoleID => 3).count
+		@files2 = Itemqueuedetail.where(:queueStatusID => 2, :status => '0').count
+		@progress2 = Itemqueuedetail.where(:queueStatusID => 2, :status => '1').count
 
-		@operators3 = Userrolemap.where(:maproleID => 5).count
-		@files3 = Itemqueuedetail.where(:queueStatusID => 4, :status => 'NOT ALLOCATED').count
-		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => 'ALLOCATED').count
+		@operators3 = Userrolemap.where(:mapRoleID => 5).count
+		@files3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '0').count
+		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '1').count
 
 		@files4 = Itemqueuedetail.where(:queueStatusID => 9).count
-		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
   			format.csv { send_data @excel.to_csv }
   			format.xls 
 		end
 
-		#@excel1 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		#@excel1 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
   			format.csv { send_data @excel1.to_csv }
@@ -56,14 +56,14 @@ class UserrolemapsController < ApplicationController
 		end
 		 
 		@details = if params[:start_date]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 			else
-				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 			end
 		@excel = if params[:start_date]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:start_date][:year]}-#{params[:start_date][:month]}-#{params[:start_date][:day]}","#{params[:end_date][:year]}-#{params[:end_date][:month]}-#{params[:end_date][:day]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 			else
-				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 			end
 		#respond_to do |format|
   		#	format.html
@@ -85,9 +85,9 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 			else
-				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0"')
 			end	
 		#respond_to do |format|
   		#	format.html
@@ -95,9 +95,9 @@ class UserrolemapsController < ApplicationController
   		#	format.xls 
 		#end
 		@excel1 = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 			else
-				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
+				Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0"')
 			end	
 		
 	end
@@ -114,9 +114,9 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "0"')
 		end
 		#respond_to do |format|
   		#	format.html
@@ -124,9 +124,9 @@ class UserrolemapsController < ApplicationController
   		#	format.xls 
 		#end
 		@excel2 = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}" ,"#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 4 AND itemqueuedetails.status = "0"')
 		end
 		
 	end
@@ -143,9 +143,9 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "0"')
 		end
 		#respond_to do |format|
   		#	format.html
@@ -153,9 +153,9 @@ class UserrolemapsController < ApplicationController
   		#	format.xls 
 		#end
 		@excel3 = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 9 AND itemqueuedetails.status = "0"')
 		end
 		
 	end
@@ -172,9 +172,9 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "0"')
 		end
 		#respond_to do |format|
   		#	format.html
@@ -182,9 +182,9 @@ class UserrolemapsController < ApplicationController
   		#	format.xls 
 		#end
 		@excel4 = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ?  AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}", "#{@accession}","#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 5 AND itemqueuedetails.status = "0"')
 		end
 		
 	end
@@ -201,9 +201,9 @@ class UserrolemapsController < ApplicationController
 		@journal = ".*"
 		end
 		@details = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "0"')
 		end
 		#respond_to do |format|
   		#	format.html
@@ -211,9 +211,9 @@ class UserrolemapsController < ApplicationController
   		#	format.xls 
 		#end
 		@excel5 = if params[:datetimepicker1]
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID').where('(itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "0") AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?)',"#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")		
 		else
-			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "NOT ALLOCATED"')
+			Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 6 AND itemqueuedetails.status = "0"')
 		end
 		
 	end
@@ -223,26 +223,26 @@ class UserrolemapsController < ApplicationController
 
 	def index1
 		@operators5 = Userrolemap.where(:maproleID => 7).count
-		@files5 = Itemqueuedetail.where(:queueStatusID => 5, :status => 'NOT ALLOCATED').count
-		@progress5 = Itemqueuedetail.where(:queueStatusID => 5, :status => 'ALLOCATED').count
+		@files5 = Itemqueuedetail.where(:queueStatusID => 5, :status => '0').count
+		@progress5 = Itemqueuedetail.where(:queueStatusID => 5, :status => '1').count
 
 		@operators6 = Userrolemap.where(:maproleID => 6).count
-		@files6 = Itemqueuedetail.where(:queueStatusID => 6, :status => 'NOT ALLOCATED').count
-		@progress6 = Itemqueuedetail.where(:queueStatusID => 6, :status => 'ALLOCATED').count
+		@files6 = Itemqueuedetail.where(:queueStatusID => 6, :status => '0').count
+		@progress6 = Itemqueuedetail.where(:queueStatusID => 6, :status => '1').count
 
 		@operators3 = Userrolemap.where(:maproleID => 5).count
-		@files3 = Itemqueuedetail.where(:queueStatusID => 4, :status => 'NOT ALLOCATED').count
-		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => 'ALLOCATED').count
+		@files3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '0').count
+		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '1').count
 
 		@files4 = Itemqueuedetail.where(:queueStatusID => 9).count
-		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
   			format.csv { send_data @excel4.to_csv }
   			format.xls 
 		end
 
-		#@excel1 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "NOT ALLOCATED"')
+		#@excel1 = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 2 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
   			format.csv { send_data @excel5.to_csv }
@@ -318,3 +318,4 @@ class UserrolemapsController < ApplicationController
 		redirect_to :action => 'addresses'
 	end
 end
+

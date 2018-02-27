@@ -4,7 +4,6 @@
   <%= form_tag(:action => 'login_attempt') do %>
     <p>Username</br> <%= text_field_tag(:username_or_email) %></p> 
     <p>Password</br> <%= password_field_tag :login_password %></p>
-    <%= check_box_tag 'rock', 'rock music' %>
     <%= submit_tag("Log In") %>
   <% end %>
 </div>

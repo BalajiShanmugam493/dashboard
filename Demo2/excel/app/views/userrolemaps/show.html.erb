@@ -1,0 +1,19 @@
+<h1>WORKFLOW DETAILS</h1>
+<table class="table">
+<tr class="tr">
+	<td>
+<div>
+	<p>TDK completed by:</p>
+	<p>Funding completed by:</p>
+	<p>QC completed by:</p>
+</div>
+</td>
+<td>
+<div>
+<% for t in @details %>
+<p>UserID: <%= t.userID %></p>
+<% end %>
+</div>
+</td>
+</tr>
+</table>

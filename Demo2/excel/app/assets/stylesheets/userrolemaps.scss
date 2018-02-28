@@ -1,0 +1,230 @@
+// Place all the styles related to the Userrolemaps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+	font-family:Trebuchet MS;
+	background:#293d3d;
+
+}
+
+.levels{
+	background:#f7f58a;
+	text-align:center;
+	width:40%;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+table, td{
+	//border:5px solid black;
+	//align:center;
+	
+}
+
+.indextable{
+	margin-left:auto;
+	margin-right:auto;
+
+}
+.indextable tr td{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.8), 0 17px 50px 0 rgba(0,0,0,0.8);
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+//.button_to{
+//	width:200px;
+//	height:100px;
+//	margin:10px;
+//	font-size:40px;
+//	font-family:Trebuchet MS;
+//	color:black;
+//	text-decoration:none;
+//}
+//.home{
+//	text-decoration:none;
+//	text-align:right;	
+//}
+
+.td1 {
+	background:#009999;
+	color: white;
+	text-decoration:none;
+	text-align:center;
+	height:100px;
+	padding:50px;
+	border:5px solid black;
+
+}
+
+.td2 {
+	background:#ffd11a;
+	color: white;
+	text-align:center;
+	height:100px;
+	padding:50px;
+	border:5px solid black;
+}
+
+.td3 {
+	background:#33ff99;
+	color: white;
+	text-align:center;
+	height:100px;
+	padding:50px;
+	border:5px solid black;
+}
+
+.td4 {
+	background:#cc3399;
+	color: white;
+	text-align:center;
+	height:100px;
+	padding:50px;
+	border:5px solid black;
+}
+
+.head1 {
+	background:#00e6e6;
+	text-align:center;
+	font-weight:bold;
+	padding:20px;
+	border:5px solid black;
+	
+}
+
+.head2 {
+	background:#ffff4d;
+	text-align:center;
+	font-weight:bold;
+	padding:20px;
+	border:5px solid black;
+}
+
+.head3 {
+	background:#99ffcc;
+	text-align:center;
+	font-weight:bold;
+	padding:20px;
+	border:5px solid black;
+}
+
+.head4 {
+	background:#e085c2;
+	text-align:center;
+	padding:20px;
+	font-weight:bold;
+	border:5px solid black;
+}
+
+.button1{
+	background-color: #00e6e6; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button1:hover{
+	background:white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button2{
+	background-color: #ffff4d; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover{
+	background:white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button3{
+	background-color: #99ffcc; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button3:hover{
+	background:white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.button4{
+	background-color: #e085c2; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button4:hover{
+	background:white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+meter{
+	background:black;
+}
+
+.tr{
+	background:#33ccff;
+	//border:10px solid black;	
+}
+
+.table{
+	margin-left:auto;
+	margin-right:auto;
+
+}
+.table td{
+	border:1px solid black;
+	padding:10px;
+	
+}
+
+p{
+	color:white;
+	font-weight:bold;
+}
+
+h1{
+	text-align:center;
+	color:white;
+}
+
+div
+{
+	text-align:left;
+}
+
+

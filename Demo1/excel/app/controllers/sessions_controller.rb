@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     flash[:color]= "invalid"
     render "login"	
   end
-  render layout: 'layout1'
+  #render layout: 'layout1'
 end
 	def logout
   	session[:user_id] = nil

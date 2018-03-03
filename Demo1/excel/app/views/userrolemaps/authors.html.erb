@@ -6,11 +6,9 @@
 <tr class="tr">
 <% @my_date1 = Time.now - 4.years %>
 <% @my_date2 = Time.now %>
-<td>Start Date<%= select_date( @my_date1 ,prompt: true,prefix: :start_date) %></td>
-<td>Last Date<%= select_date( @my_date2 ,prompt: true,prefix: :end_date) %></td>
 <td>AccessionItemNo:<%= text_field_tag :accession %></td>
 <td>JournalSequence:<%= text_field_tag :journal %></td>
-<td>SDate:<div class="container" style="width:100%;">
+<td><span>SDate:</span><div class="container" style="width:100%;">
     <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
@@ -34,7 +32,7 @@
         </script>
     </div>
 </div></td>
-<td>EDate:<div class="container"  style="width:100%;">
+<td><span>EDate:</span><div class="container"  style="width:100%;">
     <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
@@ -90,10 +88,10 @@
 	<td><%= t.priority %>
 		<%= form_tag(:action => 'updateAuthors') do %>
 		<%= text_field_tag(:priority) %>
-		<%= hidden_field_tag 'id' , t.id %>
+		<%= hidden_field_tag 'id' , t.itemID %>
 		<%= submit_tag("Change") %>
   		<% end %></td>
-	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+	<td><%= link_to 'Show', {:action => 'show', :id => t.itemID}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
 	</tr>
 <% end %>
 </table>

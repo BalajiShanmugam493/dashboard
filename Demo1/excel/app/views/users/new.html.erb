@@ -1,13 +1,40 @@
 <% @page_title = "UserAuth | Signup" %>
-<div class="Sign_Form">
+<!DOCTYPE html>
+<head>
+
+<% stylesheet_link_tag "style" %>
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    
+  <div class="fadeInDown">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" style=" display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;" />
+    </div>
+
+
+<div style="height: 440px;" class="wrapper">
   <h1>Sign Up</h1>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> Username</br> <%= f.text_field :username%> </p>
-    <p> mapRoleID</br> <%= f.select(:mapRoleID, options_for_select([ ['TKA',1] ,['FUNDING',2],['STGA',3],['QCA',4],['AUTHOR',5],['ADDRESS',6],['STGD',7],
-    ['QCD',8] ] ))%> </p>
-    <p> Password</br> <%= f.password_field :password%></p>
-    <p> Confirm Password</br> <%= f.password_field :password_confirmation%> </p>
-    <%= f.submit :Signup %>
+    <fieldset>
+    <!-- <legend>Please Log In</legend> -->
+    <div class="container">
+      <p style="text-align: center;"> Username</br> <%= f.text_field :username, class:"fadeIn second"%> </p>
+      <p style="text-align: center;"> mapRoleID</br> <%= f.select(:mapRoleID, options_for_select([ ['TKA',1] ,['FUNDING',2],['STGA',3],['QCA',4],['AUTHOR',5],['ADDRESS',6],['STGD',7],['QCD',8], ['ADMIN',11] ] ),{}, { :class => 'styled-select' })%> </p>
+      <p style="text-align: center;"> Password</br> <%= f.password_field :password, class:"fadeIn second"%></p>
+      <p style="text-align: center;"> Confirm Password</br> <%= f.password_field :password_confirmation, class:"fadeIn second"%> </p>
+    </div>
+    <div>
+    <p style="text-align: center;"><%= f.submit :Signup,class:"fadeIn fourth" %></p>
+  </div>
+</fieldset>
   <% end %>
   <% if @user.errors.any? %>
     <ul class="Signup_Errors">
@@ -16,4 +43,6 @@
     <% end %>
     </ul>
   <% end %>
+</div>
+</div>
 </div>

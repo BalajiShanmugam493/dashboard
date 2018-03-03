@@ -15,8 +15,9 @@ class UsersController < ApplicationController
       flash[:color]= "invalid"
     end
     #render "new"
-    render layout: 'layout1'
+    
     redirect_to :controller => 'sessions', :action => 'login'
+    #render layout: 'layout1'
   end
   def user_params
     params.require(:user).permit(:username, :mapRoleID, :password, :salt, :encrypted_password)

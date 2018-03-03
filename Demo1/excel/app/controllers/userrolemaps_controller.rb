@@ -347,51 +347,55 @@ class UserrolemapsController < ApplicationController
 	end
 
 	def updateDispatched
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		#Itemqueuedetail.update(params[:id], priority: params[:priority])
+		#Itemdetail.update(params[:id], priority: params[:priority])
+		#Item = Itemqueuedetail.find_by_itemID(params[:id])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
+		#Item.update(:priority => params[:priority])
 		redirect_to :action => 'dispatched'
 	end
 
 	def updateDispatchedd
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'dispatchedd'
 	end
 	
 
 	def updateTdk
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'tdk'
 	end
 
 	def updateFunding
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'funding'
 	end
 
 	def updateQc
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'qc'
 	end
 
 	def updateQcd
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'qcd'
 	end
  	
 	def updateAuthors
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'authors'
 	end
 
 	def updateAddresses
-		Itemqueuedetail.update(params[:id], priority: params[:priority])
-		Itemdetail.update(params[:id], priority: params[:priority])
+		@item = Itemqueuedetail.where(itemID: params[:id]).update_all(priority: params[:priority])
+		@item1 = Itemdetail.where(itemID:params[:id]).update_all(priority:params[:priority])
 		redirect_to :action => 'addresses'
 	end
 end

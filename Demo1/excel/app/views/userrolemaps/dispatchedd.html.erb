@@ -91,10 +91,10 @@
 	<td><%= t.priority %>
 		<%= form_tag(:action => 'updateDispatchedd') do %>
 		<%= text_field_tag(:priority) %>
-		<%= hidden_field_tag 'id' , t.id %>
+		<%= hidden_field_tag 'id' , t.itemID %>
 		<%= submit_tag("Change") %>
   		<% end %></td>
-	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+	<td><%= link_to 'Show', {:action => 'show', :id => t.itemID}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
 	</tr>
 <% end %>
 </table>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+
+<% stylesheet_link_tag "style" %>
+</head>
+<body>
+	<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+    <a href="<%= new_user_path %>" class="inactive underlineHover" style="font-size: 17px">SIGN UP</a>
+	<div class="fadeInDown">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+<div class="wrapper">
+
+	<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert] %></p>
+	<% end %>
+	<%= form_tag do  %>
+	<fieldset>
+		<legend>Please Log In</legend>
+		<div class="container">
+			<%= label_tag :name,'Name' %>
+			<%= text_field_tag :name, params[:name] , class:"fadeIn second" %>
+			<%= label_tag :password, 'Password' %>
+			<%= password_field_tag :password, params[:password] , class:"fadeIn third" %>
+		</div>
+		<div>
+			<%= submit_tag "Login" , class:"fadeIn fourth" %>
+		</div>
+	</fieldset>
+	<% end %>
+	
+</div>
+</div>
+</div>
+</body>

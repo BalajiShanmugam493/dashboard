@@ -1,0 +1,33 @@
+
+<head>
+
+<% stylesheet_link_tag "style" %>
+</head>
+
+<body>
+	<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a href="<%= new_session_path %>" class="inactive underlineHover" style="font-size: 17px">SIGN IN</a>
+    <h2 class="active ">Sign Up</h2>
+	<div class="fadeInDown">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+<div class="wrapper">
+
+<div>		
+<%= render 'form', user: @user , class:"container" %>
+<div>
+</div>
+
+		
+<%= link_to 'Back', users_path %>
+</div>
+</div>
+</div>
+
+</body>

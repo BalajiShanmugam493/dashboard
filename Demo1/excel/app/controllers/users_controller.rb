@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new 
+    render layout: 'layout1'
   end
   def create
     @user = User.new(user_params)
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
       flash[:color]= "invalid"
     end
     #render "new"
+    render layout: 'layout1'
     redirect_to :controller => 'sessions', :action => 'login'
   end
   def user_params

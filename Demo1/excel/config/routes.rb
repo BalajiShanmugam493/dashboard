@@ -38,6 +38,7 @@ Rails.application.routes.draw do
    get "/path/to/your/funding_operators/page", to: "userrolemaps#funding_operators", as: "funding_operators"
 
    get "/path/to/your/qc_operators/page", to: "userrolemaps#qc_operators", as: "qc_operators"
+     get "/path/to/your/qcd_operators/page", to: "userrolemaps#qcd_operators", as: "qcd_operators"
 
    get "/path/to/your/authors_operators/page", to: "userrolemaps#authors_operators", as: "authors_operators"
 
@@ -45,10 +46,13 @@ Rails.application.routes.draw do
    
 
   get "/path/to/your/qc/page", to: "userrolemaps#qc", as: "qc"
+    get "/path/to/your/qcd/page", to: "userrolemaps#qcd", as: "qcd"
 
   get "/path/to/your/funding/page", to: "userrolemaps#funding", as: "funding"
 
   get "/path/to/your/dispatched/page", to: "userrolemaps#dispatched", as: "dispatched"
+get "/path/to/your/dispatchedd/page", to: "userrolemaps#dispatchedd", as: "dispatchedd"
+  
    # post "/path/to/your/dispatched/page", to: "userrolemaps#dispatched", as: "dispatched"
 
 	get "/path/to/your/welcome/page", to: "userrolemaps#welcome", as: "welcome"

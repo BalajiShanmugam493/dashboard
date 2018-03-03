@@ -144,18 +144,18 @@ gauge.value(x);
 </script>
 </td>
 <td class=td3>
-<%= link_to 'Process Details',qc_path(@files3), class:"button3" %>
+<%= link_to 'Process Details',qcd_path(@files7), class:"button3" %>
 <br>
 </br>
-<%= link_to 'Operators Details',qc_operators_path, class:"button3"%>
+<%= link_to 'Operators Details',qcd_operators_path, class:"button3"%>
 </br>
 </br>
-<p>No.of operators:<%= @operators3 %></p>
-<p>No.of files:<%= @files3 %></p>
-<p>Files in progress:<%= @progress3 %></p>
+<p>No.of operators:<%= @operators7 %></p>
+<p>No.of files:<%= @files7 %></p>
+<p>Files in progress:<%= @progress7 %></p>
 </br>
-<input type="hidden" id="gauge3" value="<%= @files3 %>">
-<input type="hidden" id="tot3" value="<%= @progress3 %>">
+<input type="hidden" id="gauge3" value="<%= @files7 %>">
+<input type="hidden" id="tot3" value="<%= @progress7 %>">
 <div class="gauge gauge--liveupdate" id="meter3">
         	<div class="gauge__container">
         		<div class="gauge__marker"></div>
@@ -180,17 +180,17 @@ gauge.value(x);
 </script>
 </td>
 <td class="td4">
-<%= link_to 'Process Details',dispatched_path(@files4), class:"button4" %>
+<%= link_to 'Process Details',dispatchedd_path(@files8), class:"button4" %>
 </br>
 </br>
-<p>No.of files:<%= @files4 %></p>
-</br>
-</br>
-</br>
+<p>No.of files:<%= @files8 %></p>
 </br>
 </br>
 </br>
-<input type="hidden" id="gauge4" value="<%= @files4 %>">
+</br>
+</br>
+</br>
+<input type="hidden" id="gauge4" value="<%= @files8 %>">
 <div class="gauge gauge--liveupdate" id="meter4">
         	<div class="gauge__container">
         		<div class="gauge__marker"></div>

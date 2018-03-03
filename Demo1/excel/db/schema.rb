@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303003417) do
+ActiveRecord::Schema.define(version: 20180303201643) do
 
   create_table "itemdetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "itemID"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20180303003417) do
     t.string "pageSpan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "priority"
     t.string "path"
     t.string "accessionId"
     t.string "jobName"
+    t.integer "priority"
   end
 
   create_table "itemqueuedetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

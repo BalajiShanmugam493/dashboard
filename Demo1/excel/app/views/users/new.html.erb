@@ -3,7 +3,8 @@
   <h1>Sign Up</h1>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <p> Username</br> <%= f.text_field :username%> </p>
-    <p> mapRoleID</br> <%= f.text_field :mapRoleID%> </p>
+    <p> mapRoleID</br> <%= f.select(:mapRoleID, options_for_select([ ['TKA',1] ,['FUNDING',2],['STGA',3],['QCA',4],['AUTHOR',5],['ADDRESS',6],['STGD',7],
+    ['QCD',8] ] ))%> </p>
     <p> Password</br> <%= f.password_field :password%></p>
     <p> Confirm Password</br> <%= f.password_field :password_confirmation%> </p>
     <%= f.submit :Signup %>

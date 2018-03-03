@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 #before_action :save_login_state, :only => [:login, :login_attempt]
   def login
     #Login Form
+    render layout: 'layout1'
   end
   def login_attempt
   authorized_user = User.authenticate(params[:username_or_email],params[:login_password])
@@ -15,6 +16,7 @@ class SessionsController < ApplicationController
     flash[:color]= "invalid"
     render "login"	
   end
+  render layout: 'layout1'
 end
 	def logout
   	session[:user_id] = nil

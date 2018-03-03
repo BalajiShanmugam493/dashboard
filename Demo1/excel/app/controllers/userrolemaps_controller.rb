@@ -5,20 +5,24 @@ class UserrolemapsController < ApplicationController
 	def index
 		@role1 = Role.select("roleID").where(roleName: 'TKA').map(&:roleID).uniq
 		@operators1 = User.where("mapRoleID = ?", @role1 ).count
-		@files1 = Itemqueuedetail.where(:queueStatusID => 1).count
-		@progress1 = Itemqueuedetail.where(:queueStatusID => 1, :status => '1').count
+		@status1 = Role.select("queueStatusID").where(roleName: 'TKA').map(&:queueStatusID).uniq
+		@files1 = Itemqueuedetail.where("queueStatusID =?",@status1).count
+		@progress1 = Itemqueuedetail.where("queueStatusID =? AND status = '1' ",@status1).count
 
 		@role2 = Role.select("roleID").where(roleName: 'Funding').map(&:roleID).uniq
 		@operators2 = User.where("mapRoleID =?" , @role2).count
-		@files2 = Itemqueuedetail.where(:queueStatusID => 2).count
-		@progress2 = Itemqueuedetail.where(:queueStatusID => 2, :status => '1').count
+		@status2 = Role.select("queueStatusID").where(roleName: 'Funding').map(&:queueStatusID).uniq
+		@files2 = Itemqueuedetail.where("queueStatusID =?",@status2).count
+		@progress2 = Itemqueuedetail.where("queueStatusID = ? AND status ='1'", @status2).count
 
 		@role3 = Role.select("roleID").where(roleName: 'QCA').map(&:roleID).uniq
 		@operators3 = User.where("mapRoleID = ?", @role3).count
-		@files3 = Itemqueuedetail.where(:queueStatusID => 4).count
-		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '1').count
+		@status3 = Role.select("queueStatusID").where(roleName: 'QCA').map(&:queueStatusID).uniq
+		@files3 = Itemqueuedetail.where("queueStatusID =?",@status3).count
+		@progress3 = Itemqueuedetail.where("queueStatusID =? AND status ='1'",@status3).count
 
-		@files4 = Itemqueuedetail.where(:queueStatusID => 9).count
+		@status4 = Role.select("queueStatusID").where(roleName: 'Completed').map(&:queueStatusID).uniq
+		@files4 = Itemqueuedetail.where("queueStatusID =?",@status4).count
 		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
@@ -202,25 +206,82 @@ class UserrolemapsController < ApplicationController
 		
 	end
 
+	def qcd
+		if params[:accession] != ''
+		@accession =	params[:accession]
+		else
+		@accession	= ".*"
+		end
+		if params[:journal] != ''
+		@journal =	params[:journal]
+		else
+		@journal = ".*"
+		end
+		@status7 = Role.select("queueStatusID").where(roleName: 'QCD').map(&:queueStatusID).uniq
+		@details = if params[:datetimepicker1]
+			Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status7[0].to_s).where("itemqueuedetails.status = '0' AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ","#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			else
+				Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status7[0].to_s).where("itemqueuedetails.status = '0'")
+			end
+		@excel6 = if params[:datetimepicker1]
+			Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status7[0].to_s).where("itemqueuedetails.status = '0' AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ","#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			else
+				Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status7[0].to_s).where("itemqueuedetails.status = '0'")
+			end
+		
+		
+	end
+
+	def dispatchedd
+		if params[:accession] != ''
+		@accession =	params[:accession]
+		else
+		@accession	= ".*"
+		end
+		if params[:journal] != ''
+		@journal =	params[:journal]
+		else
+		@journal = ".*"
+		end
+		@status8 = Role.select("queueStatusID").where(roleName: 'CompletedD').map(&:queueStatusID).uniq
+		@details = if params[:datetimepicker1]
+			Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status8[0].to_s).where("itemqueuedetails.status = '0' AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ","#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			else
+				Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status8[0].to_s).where("itemqueuedetails.status = '0'")
+			end
+		@excel7 = if params[:datetimepicker1]
+			Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status8[0].to_s).where("itemqueuedetails.status = '0' AND (journalSequence REGEXP ? AND accessionItemNo REGEXP ? AND itemdetails.created_at BETWEEN ? AND ?) ","#{@journal}","#{@accession}" ,"#{params[:datetimepicker1]}","#{params[:datetimepicker2]}")
+			else
+				Itemdetail.joins("INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID AND itemqueuedetails.queueStatusID = ", @status8[0].to_s).where("itemqueuedetails.status = '0'")
+			end
+		
+	end
+	
+
 	def welcome
 	end
 
 	def index1
 		@role5 = Role.select("roleID").where(roleName: 'Author').map(&:roleID).uniq
 		@operators5 = User.where("maproleID =?", @role5).count
-		@files5 = Itemqueuedetail.where(:queueStatusID => 5).count
-		@progress5 = Itemqueuedetail.where(:queueStatusID => 5, :status => '1').count
+		@status5 = Role.select("queueStatusID").where(roleName: 'Author').map(&:queueStatusID).uniq
+		@files5 = Itemqueuedetail.where("queueStatusID =?", @status5).count
+		@progress5 = Itemqueuedetail.where("queueStatusID =? AND status ='1'",@status5).count
 
 		@role6 = Role.select("roleID").where(roleName: 'Address').map(&:roleID).uniq
 		@operators6 = User.where("maproleID =?",@role6).count
-		@files6 = Itemqueuedetail.where(:queueStatusID => 6).count
-		@progress6 = Itemqueuedetail.where(:queueStatusID => 6, :status => '1').count
+		@status6 = Role.select("queueStatusID").where(roleName: 'Address').map(&:queueStatusID).uniq
+		@files6 = Itemqueuedetail.where("queueStatusID =?",@status6).count
+		@progress6 = Itemqueuedetail.where("queueStatusID =? AND status ='1'",@status6).count
 
-		@operators3 = User.where(:maproleID => 5).count
-		@files3 = Itemqueuedetail.where(:queueStatusID => 4).count
-		@progress3 = Itemqueuedetail.where(:queueStatusID => 4, :status => '1').count
+		@role7 = Role.select("roleID").where(roleName: 'QCD').map(&:roleID).uniq
+		@operators7 = User.where("maproleID =?",@role7).count
+		@status7 = Role.select("queueStatusID").where(roleName: 'QCD').map(&:queueStatusID).uniq
+		@files7 = Itemqueuedetail.where("queueStatusID =?",@status7).count
+		@progress7 = Itemqueuedetail.where("queueStatusID =? AND status ='1'",@status7).count
 
-		@files4 = Itemqueuedetail.where(:queueStatusID => 9).count
+		@status8 = Role.select("queueStatusID").where(roleName: 'CompletedD').map(&:queueStatusID).uniq
+		@files8 = Itemqueuedetail.where("queueStatusID =?",@status8).count
 		#@excel = Itemdetail.joins('INNER JOIN itemqueuedetails ON itemqueuedetails.itemID = itemdetails.itemID WHERE itemqueuedetails.queueStatusID = 1 AND itemqueuedetails.status = "0"')
 		respond_to do |format|
   			format.html
@@ -237,34 +298,45 @@ class UserrolemapsController < ApplicationController
 		
 		respond_to do |format|
   			format.html
-  			format.csv { send_data @excel2.to_csv }
+  			format.csv { send_data @excel6.to_csv }
   			format.xls 
 		end
 
 		respond_to do |format|
   			format.html
-  			format.csv { send_data @excel3.to_csv }
+  			format.csv { send_data @excel7.to_csv }
   			format.xls 
 		end
 	end
 	def tdk_operators
-		@details = User.where(:maproleID => 2)
+		@role1 = Role.select("roleID").where(roleName: 'TKA').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role1)
 	end
 
 	def funding_operators
-		@details = User.where(:maproleID => 3)
+		@role2 = Role.select("roleID").where(roleName: 'Funding').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role2)
 	end
 
 	def qc_operators
-		@details = User.where(:maproleID => 5)
+		@role3 = Role.select("roleID").where(roleName: 'QCA').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role3)
 	end
 
+	def qcd_operators
+		@role7 = Role.select("roleID").where(roleName: 'QCD').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role7)
+	end
+
+
 	def authors_operators
-		@details = User.where(:maproleID => 7)
+		@role5 = Role.select("roleID").where(roleName: 'Author').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role5)
 	end
 
 	def addresses_operators
-		@details = User.where(:maproleID => 6)
+		@role6 = Role.select("roleID").where(roleName: 'Address').map(&:roleID).uniq
+		@details = User.where("maproleID =?",@role6)
 	end
 
 	def show
@@ -275,31 +347,50 @@ class UserrolemapsController < ApplicationController
 	end
 
 	def updateDispatched
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'dispatched'
 	end
 
+	def updateDispatchedd
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'dispatchedd'
+	end
+	
+
 	def updateTdk
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'tdk'
 	end
 
 	def updateFunding
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'funding'
 	end
 
 	def updateQc
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'qc'
 	end
 
+	def updateQcd
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
+		Itemdetail.update(params[:id], priority: params[:priority])
+		redirect_to :action => 'qcd'
+	end
+ 	
 	def updateAuthors
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'authors'
 	end
 
 	def updateAddresses
+		Itemqueuedetail.update(params[:id], priority: params[:priority])
 		Itemdetail.update(params[:id], priority: params[:priority])
 		redirect_to :action => 'addresses'
 	end

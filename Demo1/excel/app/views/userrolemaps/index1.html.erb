@@ -1,0 +1,220 @@
+<script>
+
+			function Gauge(el) {
+
+    // ##### Private Properties and Attributes
+
+    var element,      // Containing element for the info component
+        data,         // `.gauge__data` element
+        needle,       // `.gauge__needle` element
+        value = 0.0,  // Current gauge value from 0 to 1
+        prop;         // Style for transform
+
+    // ##### Private Methods and Functions
+
+    var setElement = function(el) {
+        // Keep a reference to the various elements and sub-elements
+        element = el;
+        data = element.querySelector(".gauge__data");
+        needle = element.querySelector(".gauge__needle");
+    };
+
+    var setValue = function(x) {
+        value = x;
+        var turns = -0.5 + (x * 0.5);
+        data.style[prop] = "rotate(" + turns + "turn)";
+        needle.style[prop] = "rotate(" + turns + "turn)";
+    };
+
+    // ##### Object to be Returned
+
+    function exports() { };
+
+    // ##### Public API Methods
+
+    exports.element = function(el) {
+        if (!arguments.length) { return element; }
+        setElement(el);
+        return this;
+    };
+
+    exports.value = function(x) {
+        if (!arguments.length) { return value; }
+        setValue(x);
+        return this;
+    };
+
+    // ##### Initialization
+
+    var body = document.getElementsByTagName("body")[0];
+    ["webkitTransform", "mozTransform", "msTransform", "oTransform", "transform"].
+        forEach(function(p) {
+            if (typeof body.style[p] !== "undefined") { prop = p; }
+        }
+    );
+
+    if (arguments.length) {
+        setElement(el);
+    }
+
+    return exports;
+
+};</script>
+<div>
+<h2 style="text-shadow: 2px 2px black;">PROCESS D</h2>
+<table class="indextable" >
+<tr>
+	<td class="head1">AUTHORS</td>
+	<td class="head2">ADDRESSES</td>
+	<td class="head3">QC</td>
+	<td class="head4">DISPATCHED</td>
+</tr>
+<tr>
+<td class="td1">
+
+<%= link_to 'Process Details',authors_path(@files5), class:"button1" %>
+<br>
+</br>
+<%= link_to 'Operators Details',authors_operators_path, class:"button1" %>
+</br>
+</br>
+<p>No.of operators:<%= @operators5 %></p>
+<p>No.of files:<%= @files5 %></p>
+<p>Files in progress:<%= @progress5 %></p>
+</br>
+<input type="hidden" id="gauge5" value="<%= @files5 %>">
+<input type="hidden" id="tot5" value="<%= @progress5 %>">
+<div class="gauge gauge--liveupdate" id="meter5">
+        	<div class="gauge__container">
+        		<div class="gauge__marker"></div>
+        		<div class="gauge__background"></div>
+        		<div class="gauge__center" style="background-color: #009999;"></div>
+        		<div class="gauge__data"></div>
+        		<!-- <div class="gauge__needle"></div> -->
+        	</div>
+        	<div class="gauge__labels mdl-typography__headline">
+            	<span class="gauge__label--low"></span>
+            	<span style="text-align: center; font-weight: bold; font-size: xx-large; text-shadow: 2px 2px black;" class="gauge__label--spacer" id="span5"></span>
+            	<span class="gauge__label--high"></span>
+        	</div>
+    	</div>
+
+<script>
+	var gauge = new Gauge(document.getElementById("meter5"));
+		var x=parseFloat(document.getElementById("tot5").value,10)/parseFloat(document.getElementById("gauge5").value,10);
+		document.getElementById("span5").innerHTML=(x*100).toFixed(1)+"%";
+		console.log(x.toString());
+gauge.value(x);
+</script>
+</td>
+<td class="td2">
+<%= link_to 'Process Details',addresses_path(@files6), class:"button2" %>
+<br>
+</br>
+<%= link_to 'Operators Details',addresses_operators_path, class:"button2" %>
+</br>
+</br>
+<p>No.of operators:<%= @operators6 %></p>
+<p>No.of files:<%= @files6 %></p>
+<p>Files in progress:<%= @progress6 %></p>
+</br>
+<input type="hidden" id="gauge6" value="<%= @files6 %>">
+<input type="hidden" id="tot6" value="<%= @progress6 %>">
+<div class="gauge gauge--liveupdate" id="meter6">
+        	<div class="gauge__container">
+        		<div class="gauge__marker"></div>
+        		<div class="gauge__background"></div>
+        		<div class="gauge__center" style="background-color:  #ffd11a;"></div>
+        		<div class="gauge__data"></div>
+        		<!-- <div class="gauge__needle"></div> -->
+        	</div>
+        	<div class="gauge__labels mdl-typography__headline">
+            	<span class="gauge__label--low"></span>
+            	<span style="text-align: center; font-weight: bold; font-size: xx-large; text-shadow: 2px 2px black;" class="gauge__label--spacer" id="span6"></span>
+            	<span class="gauge__label--high"></span>
+        	</div>
+    	</div>
+
+<script>
+	var gauge = new Gauge(document.getElementById("meter6"));
+		var x=parseFloat(document.getElementById("tot6").value,10)/parseFloat(document.getElementById("gauge6").value,10);
+		document.getElementById("span6").innerHTML=(x*100).toFixed(1)+"%";
+		console.log(x.toString());
+gauge.value(x);
+</script>
+</td>
+<td class=td3>
+<%= link_to 'Process Details',qc_path(@files3), class:"button3" %>
+<br>
+</br>
+<%= link_to 'Operators Details',qc_operators_path, class:"button3"%>
+</br>
+</br>
+<p>No.of operators:<%= @operators3 %></p>
+<p>No.of files:<%= @files3 %></p>
+<p>Files in progress:<%= @progress3 %></p>
+</br>
+<input type="hidden" id="gauge3" value="<%= @files3 %>">
+<input type="hidden" id="tot3" value="<%= @progress3 %>">
+<div class="gauge gauge--liveupdate" id="meter3">
+        	<div class="gauge__container">
+        		<div class="gauge__marker"></div>
+        		<div class="gauge__background"></div>
+        		<div class="gauge__center" style="background-color: #33ff99;"></div>
+        		<div class="gauge__data"></div>
+        		<!-- <div class="gauge__needle"></div> -->
+        	</div>
+        	<div class="gauge__labels mdl-typography__headline">
+            	<span class="gauge__label--low"></span>
+            	<span style="text-align: center; font-weight: bold; font-size: xx-large; text-shadow: 2px 2px black;" class="gauge__label--spacer" id="span3"></span>
+            	<span class="gauge__label--high"></span>
+        	</div>
+    	</div>
+
+<script>
+	var gauge = new Gauge(document.getElementById("meter3"));
+		var x=parseFloat(document.getElementById("tot3").value,10)/parseFloat(document.getElementById("gauge3").value,10);
+		document.getElementById("span3").innerHTML=(x*100).toFixed(1)+"%";
+		console.log(x.toString());
+gauge.value(x);
+</script>
+</td>
+<td class="td4">
+<%= link_to 'Process Details',dispatched_path(@files4), class:"button4" %>
+</br>
+</br>
+<p>No.of files:<%= @files4 %></p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<input type="hidden" id="gauge4" value="<%= @files4 %>">
+<div class="gauge gauge--liveupdate" id="meter4">
+        	<div class="gauge__container">
+        		<div class="gauge__marker"></div>
+        		<div class="gauge__background"></div>
+        		<div class="gauge__center" style="background-color: #cc3399;"></div>
+        		<div class="gauge__data"></div>
+        		<!-- <div class="gauge__needle"></div> -->
+        	</div>
+        	<div class="gauge__labels mdl-typography__headline">
+            	<span class="gauge__label--low"></span>
+            	<span style="text-align: center; font-weight: bold; font-size: xx-large; text-shadow: 2px 2px black;" class="gauge__label--spacer" id="span4"></span>
+            	<span class="gauge__label--high"></span>
+        	</div>
+    	</div>
+
+<script>
+	var gauge = new Gauge(document.getElementById("meter4"));
+		var x=parseFloat(document.getElementById("gauge5").value,10)+parseFloat(document.getElementById("gauge6").value,10)+parseFloat(document.getElementById("gauge3").value,10)+parseFloat(document.getElementById("gauge4").value,10);
+		x=parseFloat(document.getElementById("gauge4").value,10)/x;
+		document.getElementById("span4").innerHTML=(x*100).toFixed(1)+"%";
+		console.log(x.toString());
+gauge.value(x);
+</script>
+</td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Excel</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <script type="text/javascript">
+  function load()
+  {
+    setTimeout("window.open(self.location,'_self');",1800000);
+    var current=new Date();
+    document.getElementById("time1").innerHTML="Last Refresh At:"+current.toLocaleString();
+    var next=new Date(current.getTime()+1800000);
+    document.getElementById("time2").innerHTML="Next Refresh At:"+next.toLocaleString();
+    
+  }  
+  </script>
+  <body onload="load()">
+  <ul>
+  <li><%= button_to "Home", welcome_path,method: :get, class: "navbuttons" %></li>
+  <li><%= button_to "Process A", userrolemaps_path,method: :get, class: "navbuttons" %></li>
+  <li><%= button_to "Process D", index1_path,method: :get, class: "navbuttons" %></li>
+  <li class="hoverclass" style="float:right; background-color: #D50000; "><%= link_to "Logout", logout_path %></li>
+</ul>
+  
+  <ul style="background-color: rgba(128,128,128,0); box-shadow:  0 12px 16px 0 rgba(0,0,0,0), 0 17px 50px 0 rgba(0,0,0,0);">
+  <li style="color:white; padding:10px 10px 0px 10px;" id="time1"></li>
+  <li style="color:white; padding:10px 10px 0px 10px;" id="time2"></li>
+  </ul>
+  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p> 
+<%= yield %>
+</body onload="load()">
+</html>

@@ -1,0 +1,532 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+
+.Sign_Form{
+    background:#8cb3f2;
+    text-align:center;
+    
+}
+
+.Sign_Form p{
+    color:black;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #737373;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.8), 0 17px 50px 0 rgba(0,0,0,0.8);
+}
+
+li {
+    float: left;
+
+
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    font-weight:bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #d9d9d9;
+     text-decoration: none;
+}
+
+
+
+
+// Place all the styles related to the Userrolemaps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+    font-family:Trebuchet MS;
+    background:#293d3d;
+
+}
+
+.levels{
+    background:#f7f58a;
+    text-align:center;
+    width:40%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+table, td{
+    //border:5px solid black;
+    //align:center;
+    
+}
+
+.indextable{
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.indextable tr td{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.8), 0 17px 50px 0 rgba(0,0,0,0.8);
+}
+
+//tr:nth-child(even) {background-color: #f2f2f2;}
+
+//.button_to{
+//  width:200px;
+//  height:100px;
+//  margin:10px;
+//  font-size:40px;
+//  font-family:Trebuchet MS;
+//  color:black;
+//  text-decoration:none;
+//}
+//.home{
+//  text-decoration:none;
+//  text-align:right;   
+//}
+
+.td1 {
+    background:#009999;
+    font-size:large;
+    font-weight:bold;
+    color: white;
+    text-decoration:none;
+    text-align:center;
+    height:100px;
+    padding: 10px 50px 20px 50px;
+    border:5px solid black;
+
+}
+
+.td2 {
+    background:#ffd11a;
+   font-size:large;
+    font-weight:bold;
+    color: white;
+    text-decoration:none;
+    text-align:center;
+    height:100px;
+    padding: 10px 50px 20px 50px;
+    border:5px solid black;
+
+}
+
+.td3 {
+    background:#33ff99;
+     font-size:large;
+    font-weight:bold;
+    color: white;
+    text-decoration:none;
+    text-align:center;
+    height:100px;
+    padding: 10px 50px 20px 50px;
+    border:5px solid black;
+
+}
+
+.td4 {
+    background:#cc3399;
+     font-size:large;
+    font-weight:bold;
+    color: white;
+    text-decoration:none;
+    text-align:center;
+    height:100px;
+    padding: 10px 50px 20px 50px;
+    border:5px solid black;
+
+}
+
+.head1 {
+    background:#00e6e6;
+    text-align:center;
+    font-weight:bold;
+    padding:20px;
+    border:5px solid black;
+    color:black;
+    text-shadow: 2px 2px white;
+    
+}
+
+.head2 {
+    background:#ffff4d;
+    text-align:center;
+    font-weight:bold;
+    padding:20px;
+    border:5px solid black;
+    color:black;
+    text-shadow: 2px 2px white;
+}
+
+.head3 {
+    background:#99ffcc;
+    text-align:center;
+    font-weight:bold;
+    padding:20px;
+    border:5px solid black;
+    color:black;
+    text-shadow: 2px 2px white;
+}
+
+.head4 {
+    background:#e085c2;
+    text-align:center;
+    padding:20px;
+    font-weight:bold;
+    border:5px solid black;
+    color:black;
+    text-shadow: 2px 2px white;
+}
+
+.button1{
+    background-color: #00e6e6; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight:bold;
+    text-shadow: 2px 2px white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button1:hover{
+    background:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    text-decoration:none;
+    color:black;
+}
+
+.button2{
+    background-color: #ffff4d; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight:bold;
+    text-shadow: 2px 2px white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover{
+    background:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    text-decoration:none;
+    color:black;
+}
+
+.button3{
+    background-color: #99ffcc; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight:bold;
+    text-shadow: 2px 2px white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button3:hover{
+    background:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    text-decoration:none;
+    color:black;
+}
+
+
+.button4{
+    background-color: #e085c2; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight:bold;
+    text-shadow: 2px 2px white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button4:hover{
+    background:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    text-decoration:none;
+    color:black;
+}
+
+
+meter{
+    background:black;
+}
+
+.tr{
+    background:#33ccff;
+    //border:10px solid black;  
+}
+
+.table{
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.table td{
+    border:1px solid black;
+    padding:10px;
+    
+}
+
+p{
+    color:black;
+    font-weight:bold;
+    text-shadow: 2px 2px white;
+}
+
+h2{
+    text-align:center;
+    color:white;
+}
+
+div
+{
+    text-align:left;
+
+}
+
+
+
+.gauge {
+    position: relative;
+}
+
+.gauge__container {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+    text-align: center;
+    -webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+.gauge__background {
+    z-index: 0;
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    top: 0;
+    border-radius: 300px 300px 0 0;
+
+}
+
+.gauge__data {
+    z-index: 1;
+    position: absolute;
+    background-color: #2E7D32;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 300px 300px 0 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-transform-origin: center bottom;
+       -moz-transform-origin: center bottom;
+        -ms-transform-origin: center bottom;
+         -o-transform-origin: center bottom;
+            transform-origin: center bottom;
+}
+
+.gauge__center {
+    z-index: 2;     
+    position: absolute;
+    background-color: #fff;
+    margin-right: auto;
+    border-radius: 300px 300px 0 0;
+
+}
+
+.gauge__marker {
+    z-index: 3;
+    background-color: #fff;
+    position: absolute;
+    width: 0px;
+}
+
+.gauge__needle {
+    z-index: 4;
+    background-color: #E91E63;
+    height: 3px;
+    position: absolute;
+    -webkit-transform-origin: left center;
+       -moz-transform-origin: left center;
+        -ms-transform-origin: left center;
+         -o-transform-origin: left center;
+            transform-origin: left center;
+}
+
+.gauge__labels {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+}
+
+.gauge__label--low {
+    display: table-cell;
+    text-align: center;
+}
+
+.gauge__label--spacer {
+    display: table-cell;
+}
+
+.gauge__label--high {
+    display: table-cell;
+    text-align: center;
+}
+
+/*
+ * Now define the rules that depend on the size of
+ * the gauge. We start with sizing for a small mobile
+ * device.
+ */
+
+@media only screen and (min-width: 400px) {
+.gauge { height: calc(90px + 3em); }
+.gauge__container { width: 180px; height: 90px; }
+.gauge__marker { height: 90px; left: 89.5px; }
+.gauge__background { width: 180px; height: 90px; }
+.gauge__center { width: 108px; height: 54px; top: 36px; margin-left: 36px; }
+.gauge__data { width: 180px; height: 90px; }
+.gauge__needle { left: 90px; top: 87px; width: 90px; }
+.gauge__labels { top: 90px; width: 180px; }
+.gauge__label--low { width: 36px; }
+.gauge__label--spacer { width: 108px; }
+.gauge__label--high { width: 36px; }
+}
+ /* Increase the gauge size slightly on larger viewports.
+*/ 
+/*
+ @media only screen and (min-width: 400px) {
+    .gauge { height: calc(150px + 3em); }
+    .gauge__container { width: 300px; height: 150px; }
+    .gauge__marker { height: 150px; left: 149.5px; }
+    .gauge__background { width: 300px; height: 150px; }
+    .gauge__center { width: 180px; height: 90px; top: 60px; margin-left: 60px; }
+    .gauge__data { width: 300px; height: 150px; }
+    .gauge__needle { left: 150px; top: 147px; width: 150px; }
+    .gauge__labels { top: 150px; width: 300px; }
+    .gauge__label--low { width: 60px; }
+    .gauge__label--spacer { width: 180px; }
+    .gauge__label--high { width: 60px; }
+}
+
+*/
+/*
+ * As an option, the `gauge--liveupdate` class can be added
+ * to the main gauge element. When this class is present,
+ * we add a transition that animates any changes to the gauge
+ * value. Currently, the app does not use this option because
+ * all the inputs that can change gauge values are present
+ * on tab panels that are different from the gauge itself.
+ * Therefore, users won't be able to see any gauge changes
+ * when they make input changes. The code is available, though,
+ * should this change.
+ */
+
+.gauge--liveupdate .gauge__data,
+.gauge--liveupdate .gauge__needle {
+    -webkit-transition: all 0.5s ease-in-out;
+       -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+         -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+}
+
+
+/*
+ * For a given gauge value, x, ranging from 0.0 to 1.0, set
+ * the `transform: rotate()` property according to the
+ * following equation: `-0.5 + 0.5x turns` The default
+ * properties below represent an x value of 0.
+ */
+
+.gauge__data {
+    -webkit-transform: rotate(-.50turn);
+       -moz-transform: rotate(-.50turn);
+        -ms-transform: rotate(-.50turn);
+         -o-transform: rotate(-.50turn);
+            transform: rotate(-.50turn);
+}
+.gauge__needle {
+    -webkit-transform: rotate(-.50turn);
+       -moz-transform: rotate(-.50turn);
+        -ms-transform: rotate(-.50turn);
+         -o-transform: rotate(-.50turn);
+            transform: rotate(-.50turn);
+}
+
+
+.welcomepagebuttons{
+    background-color:#2c75a5; /* Green */
+    border: 5px solid black;
+    width:250px;
+    height:150px;
+    color: white;
+    padding: 15px 32px;
+    margin:20px 20px 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    font-weight:bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-shadow: 2px 2px black;
+}
+
+.welcomepagebuttons:hover{
+    background:white;
+    color:#2c75a5;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.navbuttons{
+    height:50px;
+    background-color: #737373;
+    border:0px;
+    color:white;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-shadow: 2px 2px black;
+}
+
+
+.navbuttons:hover{
+    background-color: white;
+    color:black;
+    color:black;
+    text-shadow: 2px 2px white;
+}

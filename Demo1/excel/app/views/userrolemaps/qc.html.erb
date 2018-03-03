@@ -1,0 +1,105 @@
+<%= button_to 'Main Page',userrolemaps_path,method: :get,class: "button2" %>
+</br>
+<p>QC</p>
+<%= form_tag(qc_path, method: :get) do %>
+<table class="table">
+<tr class="tr">
+<% @my_date1 = Time.now - 4.years %>
+<% @my_date2 = Time.now %>
+<td>Start Date<%= select_date( @my_date1 ,prompt: true,prefix: :start_date) %></td>
+<td>Last Date<%= select_date( @my_date2 ,prompt: true,prefix: :end_date) %></td>
+<td>AccessionItemNo:<%= text_field_tag :accession %></td>
+<td>JournalSequence:<%= text_field_tag :journal %></td>
+<td>SDate:<div class="container" style="width:100%;">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <!-- <input type='text' class="form-control" /> -->
+                    <div class="input-group-addon" style="width:100%;">
+                        <%= text_field_tag :datetimepicker1 %>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+    $('#datetimepicker1').datetimepicker({
+        format : 'YYYY-MM-DD HH:mm',
+        defaultDate: "11/1/2013"
+                    
+    });
+});
+        </script>
+    </div>
+</div></td>
+<td>EDate:<div class="container"  style="width:100%;">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <!-- <input type='text' class="form-control" /> -->
+                    <div class="input-group-addon"  style="width:100%;">
+                        <%= text_field_tag :datetimepicker2 %>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                var date=new Date().getFullYear();
+                var month=parseInt(new Date().getMonth());
+                month=month+1;
+                date=date+"-"+month.toString();
+                date=date+"-"+new Date().getDate();
+                date=date+" "+new Date().getHours();
+                date=date+":"+new Date().getMinutes();
+                console.log(date.toString());
+    $('#datetimepicker2').datetimepicker({
+        format : 'YYYY-MM-DD HH:mm',
+        defaultDate: date.toString()
+                    
+    });
+    
+});
+        </script>
+    </div>
+</div></td>
+
+<td><%= submit_tag 'Search' %></td>
+</tr>
+</table>
+<% end %>
+<p style="text-shadow: 0px 0px black;">
+Download:
+<%= link_to "Excel", qc_path(request.parameters.merge({format: :xls})), 
+    download: 'qc.xls' %>
+</p>
+	<table class="table">
+	<tr class="tr">
+		<td>Date</td>
+		<td>ItemID</td>
+		<td>AccessionItemNo</td>
+		<td>JournalSequence</td>
+		<td>Priority</td>
+		<td>Workflow</td>
+	</tr>
+<% for t in @details %>
+	<tr class="tr">
+	<td><%= t.created_at %></td>
+	<td><%= t.itemID %></td>
+	<td><%= t.accessionItemNo %></td>
+	<td><%= t.journalSequence %></td>
+	<td><%= t.priority %>
+		<%= form_tag(:action => 'updateQc') do %>
+		<%= text_field_tag(:priority) %>
+		<%= hidden_field_tag 'id' , t.id %>
+		<%= submit_tag("Change") %>
+  		<% end %></td>
+	<td><%= link_to 'Show', {:action => 'show', :id => t.id}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+	
+	</tr>
+<% end %>
+</table>

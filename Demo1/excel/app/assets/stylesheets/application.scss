@@ -201,7 +201,12 @@ table, td{
     font-size: 12px;
     font-weight:bold;
     text-shadow: 2px 2px white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
+    //box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .button1:hover{
@@ -222,7 +227,11 @@ table, td{
     font-size: 12px;
     font-weight:bold;
     text-shadow: 2px 2px white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
 }
 
 .button2:hover{
@@ -243,7 +252,11 @@ table, td{
     font-size: 12px;
     font-weight:bold;
     text-shadow: 2px 2px white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
 }
 
 .button3:hover{
@@ -265,7 +278,11 @@ table, td{
     font-size: 12px;
     font-weight:bold;
     text-shadow: 2px 2px white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
 }
 
 .button4:hover{
@@ -501,7 +518,11 @@ div
     display: inline-block;
     font-size: 26px;
     font-weight:bold;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
     text-shadow: 2px 2px black;
 }
 
@@ -521,6 +542,11 @@ div
     padding-left: 20px;
     padding-right: 20px;
     text-shadow: 2px 2px black;
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
 }
 
 
@@ -581,7 +607,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-/*put[type=button], input[type=submit], input[type=reset]  {
+.signupButton  {
   background-color: #56baed;
   border: none;
   color: white;
@@ -601,21 +627,24 @@ h2.active {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+     -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+.signupButton:hover  {
   background-color: #39ace7;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+.signupButton:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
-}*/
+}
 
-input[type=text], input[type=password] {
+.signupText {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -623,10 +652,10 @@ input[type=text], input[type=password] {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
   margin: 5px;
   width: 20%;
-  height:10px;
+  //height:10px;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -635,14 +664,17 @@ input[type=text], input[type=password] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+    -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 
-input[type=text]:focus,input[type=password]:focus {
+signupText:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder, input[type=password]:placeholder {
+signupText:placeholder {
   color: #cccccc;
 }
 
@@ -780,4 +812,21 @@ input[type=text]:placeholder, input[type=password]:placeholder {
    -moz-border-radius: 5px;
    border-radius: 5px;
     background-color: #f6f6f6;
+    text-align:center;
+}
+
+
+.tabbutton
+{
+    background-color:white;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+
+}
+
+.show
+{
+  color:white;
 }

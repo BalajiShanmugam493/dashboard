@@ -1,9 +1,39 @@
 <% @page_title = "UserAuth | Login" -%>
-<div class= "Sign_Form">
+<!DOCTYPE html>
+<head>
+
+<% stylesheet_link_tag "style" %>
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    
+  <div class="fadeInDown">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" style=" display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;" />
+    </div>
+
+
+<div style="height: 440px;" class="wrapper">
   <h1>Log in</h1>
-  <%= form_tag(:action => 'login_attempt') do %>
-    <p>Username</br> <%= text_field_tag(:username_or_email) %></p> 
-    <p>Password</br> <%= password_field_tag :login_password %></p>
-    <%= submit_tag("Log In") %>
+   <fieldset>
+    <!-- <legend>Please Log In</legend> -->
+    <div class="container">
+   <%= form_tag(:action => 'login_attempt') do %>
+    <p style="text-align: center;">Username</br> <%= text_field_tag :username_or_email,"", class:"signupText" %></p> 
+    <p style="text-align: center;">Password</br> <%= password_field_tag :login_password,"", class:"signupText" %></p>
+    </div>
+    <div style="text-align: center;">
+    <%= submit_tag "Log In" ,:class=>"signupButton" %>
+    </div>
+	</fieldset>
   <% end %>
+</div>
+</div>
 </div>

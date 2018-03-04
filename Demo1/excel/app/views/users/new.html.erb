@@ -20,19 +20,19 @@
     </div>
 
 
-<div style="height: 440px;" class="wrapper">
+<div style="height: 470px;" class="wrapper">
   <h1>Sign Up</h1>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <fieldset>
     <!-- <legend>Please Log In</legend> -->
     <div class="container">
-      <p style="text-align: center;"> Username</br> <%= f.text_field :username, class:"fadeIn second"%> </p>
+      <p style="text-align: center;"> Username</br> <%= f.text_field :username, class:"signupText"%> </p>
       <p style="text-align: center;"> mapRoleID</br> <%= f.select(:mapRoleID, options_for_select([ ['TKA',1] ,['FUNDING',2],['STGA',3],['QCA',4],['AUTHOR',5],['ADDRESS',6],['STGD',7],['QCD',8], ['ADMIN',11] ] ),{}, { :class => 'styled-select' })%> </p>
-      <p style="text-align: center;"> Password</br> <%= f.password_field :password, class:"fadeIn second"%></p>
-      <p style="text-align: center;"> Confirm Password</br> <%= f.password_field :password_confirmation, class:"fadeIn second"%> </p>
+      <p style="text-align: center;"> Password</br> <%= f.password_field :password, class:"signupText"%></p>
+      <p style="text-align: center;"> Confirm Password</br> <%= f.password_field :password_confirmation, class:"signupText"%> </p>
     </div>
     <div>
-    <p style="text-align: center;"><%= f.submit :Signup,class:"fadeIn fourth" %></p>
+    <p style="text-align: center;"><%= f.submit :Signup,class:"signupButton" %></p>
   </div>
 </fieldset>
   <% end %>

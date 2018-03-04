@@ -85,6 +85,7 @@ Download:
 		<td>JournalSequence</td>
 		<td>Priority</td>
 		<td>Workflow</td>
+        <td>JobName</td>s
 	</tr>
 <% for t in @details %>
 	<tr class="tr">
@@ -99,6 +100,7 @@ Download:
 		<%= submit_tag("Change") %>
   		<% end %></td>
 	<td><%= link_to 'Show', {:action => 'show', :id => t.itemID}, :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
+    <td><%= t.jobName %></td>
 	
 	</tr>
 <% end %>

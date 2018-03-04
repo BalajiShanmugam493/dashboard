@@ -78,6 +78,7 @@
 		<td>JournalSequence</td>
 		<td>Priority</td>
 		<td>Workflow</td>	
+        <td>JobName</td>
 	</tr>
 <% for t in @details %>
 	<tr class="tr">
@@ -92,7 +93,8 @@
 		<%= submit_tag "Change", :class =>"tabbutton" %>
   		<% end %></td>
 	<td><%= link_to 'Show', {:action => 'show', :id => t.itemID},class: "show", :onclick=>"window.open(this.href,'show_details', 'height=600, width=600');return false;" %></td>
-	</tr>
+	<td><%= t.jobName %></td>
+    </tr>
 <% end %>
 </table>
 <p style="text-shadow: 0px 0px black;">
